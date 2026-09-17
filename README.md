@@ -51,8 +51,8 @@ Para desenhar algo na tela, basta instanciar o `vga_sync` no seu código princip
 Veja o exemplo abaixo de como instanciar o módulo e desenhar um quadrado amarelo na tela:
 
 ```verilog
-module meu_projeto_top (
-    input clk_50MHz,          // Clock de 50MHz da placa DE10-Lite
+module meu_main (
+    input clk,                // Clock de 50MHz da placa DE10-Lite
     input btn_reset,          // Botão de reset
     output VGA_HS, VGA_VS,    // Pinos de sincronismo do conector VGA
     output [3:0] VGA_R,       // Pinos Vermelhos (4 bits)
@@ -65,15 +65,7 @@ module meu_projeto_top (
     wire area_visivel;
 
     // 1. Instanciar o Controlador VGA
-    vga_sync controlador_vga (
-        .clk(clk_50MHz),
-        .reset(btn_reset),
-        .hsync(VGA_HS),
-        .vsync(VGA_VS),
-        .video_on(area_visivel),
-        .x(col_x),
-        .y(linha_y)
-    );
+    vga_sync meu_vga (clk, ~btn_reset, VGA_HS, VGA_VS, area_visivel, p_tick, eixo_x, eixo_y);
 
     // 2. Lógica de desenho (Exemplo: Desenhar um quadrado entre as coordenadas 100 e 200)
     wire desenhar_quadrado;

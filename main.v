@@ -1,7 +1,7 @@
 module main 
 
 (
-	 input clk_50MHz,          
+	 input clk,          
     input btn_reset,          
     output VGA_HS, VGA_VS,    
     output [3:0] VGA_R,       
@@ -13,7 +13,7 @@ module main
     wire area_visivel;
 
     // 1. Instancia do "motor"
-    vga_sync meu_vga (clk_50MHz, ~btn_reset, VGA_HS, VGA_VS, area_visivel, , eixo_x, eixo_y);
+    vga_sync meu_vga (clk, ~btn_reset, VGA_HS, VGA_VS, area_visivel, p_tick, eixo_x, eixo_y);
     
 	 
 	 // 2.Matemática do Gráfico  (Literalmente a logica de desenho)
