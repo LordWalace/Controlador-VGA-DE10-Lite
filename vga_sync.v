@@ -1,3 +1,9 @@
+// -----------------------------------------------------------------------------
+// Aviso de Autoria:
+// Este modulo e uma versao modificada do original criado por jconenna.
+// Disponivel em: https://github.com/jconenna/Yoshis-Nightmare/blob/master/source/vga_sync.v
+// -----------------------------------------------------------------------------
+
 module vga_sync
 
 	(
