@@ -12,16 +12,8 @@ module main
     wire [9:0] eixo_x, eixo_y;
     wire area_visivel;
 
-    vga_sync controlador_vga (
-        .clk(clk_50MHz),
-        .reset(~btn_reset), // assumindo botão ativo em 0
-        .hsync(VGA_HS),
-        .vsync(VGA_VS),
-        .video_on(area_visivel),
-        .p_tick(), // p_tick não está sendo usado aqui
-        .x(eixo_x),
-        .y(eixo_y)
-    );
+    // 1. Instancia do "motor"
+    vga_sync meu_vga (clk_50MHz, ~btn_reset, VGA_HS, VGA_VS, area_visivel, , eixo_x, eixo_y);
     
 	 
 	 // 2.Matemática do Gráfico  (Literalmente a logica de desenho)
